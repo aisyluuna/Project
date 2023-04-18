@@ -4,4 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QueueForChildren.Data\QueueForChildren.Data.csproj" />
+    <ProjectReference Include="..\QueueForChildren.Service\QueueForChildren.Service.csproj" />
+    <ProjectReference Include="..\QueueForChildren.Web\QueueForChildren.Web.csproj" />
+  </ItemGroup>
+
 </Project>
