@@ -12,7 +12,7 @@ namespace QueueForChildren.Web.Extensions
     {
         public static void RegisterDependencies(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            serviceCollection.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }

@@ -1,0 +1,170 @@
+﻿@using QueueForChildren.Data.Dtos;
+@model CreateParentDto
+
+
+<div class="row mx-auto">
+    <form id="updateParentForm" method="post" style="width: 100%" asp-action="UpdateParent" asp-controller="Account">        
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <h4 class="text-center">Личные данные</h4>
+                <div class="form-group">
+                    <label asp-for="BirthDate">Дата рождения</label>
+                    <input asp-for="BirthDate" type="date" class="form-control">
+                    <span asp-validation-for="BirthDate"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h4 class="text-center">Ваш адрес</h4>
+                <div class="form-group">
+                    <input id="latitude" asp-for="Address.Latitude" hidden />
+                    <input id="longitude" asp-for="Address.Longitude" hidden />
+                    <label asp-for="Address.Settlement">Населенный пункт</label>
+                    <input asp-for="Address.Settlement" class="form-control">
+                    <span asp-validation-for="Address.Settlement"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Serial">Серия</label>
+                    <input asp-for="Serial" class="form-control">
+                    <span asp-validation-for="Serial"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Address.MicroRegion">Район</label>
+                    <input asp-for="Address.MicroRegion" class="form-control">
+                    <span asp-validation-for="Address.MicroRegion"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Number">Номер</label>
+                    <input asp-for="Number" class="form-control">
+                    <span asp-validation-for="Number"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Address.Street">Улица</label>
+                    <input asp-for="Address.Street" class="form-control">
+                    <span asp-validation-for="Address.Street"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="IssuedBy">Кем выдано</label>
+                    <input asp-for="IssuedBy" class="form-control">
+                    <span asp-validation-for="IssuedBy"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Address.HouseNumber">Дом</label>
+                    <input asp-for="Address.HouseNumber" class="form-control">
+                    <span asp-validation-for="Address.HouseNumber"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="IssuedDate">Дата выдачи</label>
+                    <input asp-for="IssuedDate" type="date" class="form-control">
+                    <span asp-validation-for="IssuedDate"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Address.AdditionalChar">Добавочный символ</label>
+                    <input asp-for="Address.AdditionalChar" class="form-control" placeholder="При наличии">
+                    <span asp-validation-for="Address.AdditionalChar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="SubdivisionCode">Код подразделения</label>
+                    <input asp-for="SubdivisionCode" class="form-control">
+                    <span asp-validation-for="SubdivisionCode"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="INN">ИНН</label>
+                    <input asp-for="INN" class="form-control">
+                    <span asp-validation-for="INN"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Phone">Телефон</label>
+                    <input asp-for="Phone" type="tel" class="form-control">
+                    <span asp-validation-for="Phone"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Name">Имя</label>
+                    <input asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="LastName">Фамилия</label>
+                    <input asp-for="LastName" class="form-control">
+                    <span asp-validation-for="LastName"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="MiddleName">Отчество</label>
+                    <input asp-for="MiddleName" class="form-control" placeholder="При наличии">
+                    <span asp-validation-for="MiddleName"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 mx-auto">
+                <button type="submit" class="btn btn-outline-success">Обновить</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">   
+    $('#updateParentForm').submit(function (event) {
+        $('#content').html(loader());
+        event.preventDefault();
+        let href = $(this).attr('action');
+
+        fetch(href, {
+            method: 'POST',
+            body: new FormData(this)
+        })
+            .then(function (response) {
+                response.text()
+                .then(function (text){                    
+                        $('#content').html(text);
+                     })
+                });                
+        });
+</script>

@@ -1,0 +1,30 @@
+﻿@using QueueForChildren.Data.Dtos; 
+@model QueueForChildren.Data.Dtos.SchoolQueue.SchoolSelectDto    
+
+<table class="table table-hover table-dark">
+    <thead>
+    <tr>            
+        <th scope="col">Наименование</th>
+        <th scope="col">Район</th>
+        <th scope="col">Адрес</th>
+        <th scope="col">Количество мест</th>
+        <th scope="col">Язык обучения</th>
+        <th scope="col">Рейтинг</th>
+        <th scope="col">Номер телефона</th>
+        <th hidden scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var row in Model.Schools) {
+        <tr class="schoolRow">                
+            <td>@row.Name</td>
+            <td>@row.MicroRegion</td>
+            <td>@row.Address</td>
+            <td>@row.FreePlaceCount</td>
+            <td>@string.Join(", ", row.Languages.Select(lang => lang.Name))</td>
+            <td>@row.Rating</td>
+            <td>@row.Phone</td>
+        </tr>
+    }       
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="text-center">
+    <div class="form-group">
+        <label for="Kindergarten">Детский сад</label>
+        <select class="form-control" id="Kindergarten" asp-items="@ViewBag.KindergartenList">
+            <option disabled selected value="">Выберите детский сад</option>
+        </select>
+    </div>
+</div>
+
+<div id="queueTable">
+    
+</div>
+
+<script type="text/javascript">
+    //$('select option:first').prop('selected', true);
+    
+    $('#Kindergarten').on('change', function (e){
+            var valueSelected = this.value;            
+            fetchWithUpdateContent('#queueTable', '/KindergartenQueue/QueueList?kindergartenId='+valueSelected);           
+        });
+               
+    
+</script>

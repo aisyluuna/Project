@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using QueueForChildren.Data.Entities;
+using QueueForChildren.Web.Interfaces;
 
 namespace QueueForChildren.Controllers
 {
@@ -13,13 +15,19 @@ namespace QueueForChildren.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IRepository<Address> _addressRepository;
+
+        public HomeController(ILogger<HomeController> logger, IRepository<Address> addressRepository)
         {
             _logger = logger;
+            _addressRepository = addressRepository;
         }
 
         public IActionResult Index()
         {
+            var addresses = _addressRepository.GetAll()
+                .ToArray();
+            
             return View();
         }
 

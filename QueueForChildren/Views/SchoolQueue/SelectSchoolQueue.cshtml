@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="text-center">
+    <div class="form-group">
+        <label for="School">Школа</label>
+        <select class="form-control" id="School" asp-items="@ViewBag.SchoolList">
+            <option disabled selected value="">Выберите школу</option>
+        </select>
+    </div>
+</div>
+
+<div id="queueTable">
+    
+</div>
+
+<script type="text/javascript">
+    //$('select option:first').prop('selected', true);
+    
+    $('#School').on('change', function (e){
+            var valueSelected = this.value;            
+            fetchWithUpdateContent('#queueTable', '/SchoolQueue/QueueList?schoolId='+valueSelected);           
+        });
+               
+    
+</script>

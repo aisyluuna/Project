@@ -1,0 +1,113 @@
+﻿@using QueueForChildren.Data.Dtos;
+@model CreateChildDto
+
+<div class="row mx-auto">
+    <form id="createChildForm" method="post" style="width: 100%" asp-action="Create" asp-controller="Child">
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="LastName">Фамилия</label>
+                    <input asp-for="LastName" class="form-control">
+                    <span asp-validation-for="LastName" />
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Name">Имя</label>
+                    <input asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name" />
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="MiddleName">Отчество</label>
+                    <input asp-for="MiddleName" class="form-control" placeholder="При наличии">
+                    <span asp-validation-for="MiddleName" />
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="BirthDate">Дата рождения</label>
+                    <input asp-for="BirthDate" type="date" class="form-control">
+                    <span asp-validation-for="BirthDate" />
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Serial">Серия</label>
+                    <input asp-for="Serial" class="form-control">
+                    <span asp-validation-for="Serial" />
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Number">Номер</label>
+                    <input asp-for="Number" class="form-control">
+                    <span asp-validation-for="Number" />
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="IssuedBy">Кем выдано</label>
+                    <input asp-for="IssuedBy" class="form-control">
+                    <span asp-validation-for="IssuedBy" />
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="IssuedDate">Дата выдачи</label>
+                    <input asp-for="IssuedDate" type="date" class="form-control">
+                    <span asp-validation-for="IssuedDate" />
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="ActNumber">Актовый номер</label>
+                    <input asp-for="ActNumber" class="form-control">
+                    <span asp-validation-for="ActNumber" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 mx-auto">
+                <button type="submit" class="btn btn-outline-success">Добавить</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">   
+    $('#createChildForm').submit(function (event) {
+        $('#content').html(loader());
+        event.preventDefault();
+        let href = $(this).attr('action');
+
+        fetch(href, {
+            method: 'POST',
+            body: new FormData(this)
+        })
+            .then(function (data) {
+                if (data.ok) {
+                    $("#childrenBtn").click();
+                }
+            })
+
+    });
+</script>

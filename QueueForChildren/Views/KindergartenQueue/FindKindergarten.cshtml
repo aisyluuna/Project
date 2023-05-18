@@ -1,0 +1,36 @@
+﻿@using QueueForChildren.Data.Dtos.KindergartenQueue
+@model KindergartenFindDto
+
+<div class="text-center">
+    <form method="post" id="findSchoolForm" asp-action="FindKindergarten" asp-controller="KindergartenQueue">
+        <div class="form-group">
+            <label asp-for="Language">Язык детского сада</label>
+            <select class="form-control" asp-for="Language" asp-items="@ViewBag.Languages">
+                <option disabled selected value="">Выберите язык</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Region">Район</label>
+            <select class="form-control" asp-for="Region" asp-items="@ViewBag.Regions">
+                <option disabled selected value="">Выберите район</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Radius">Радиус поиска</label>
+            <input type="range" class="form-control" value="0" min="0" step="1" max="10" asp-for="Radius" oninput="radiusValue.innerText = this.value">
+            <p id="radiusValue">0</p>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Найти</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $('#findSchoolForm').submit(function (event) {
+        event.preventDefault();
+        let href = $(this).attr('action');
+        fetchWithUpdateContent('#content', href, {
+            method: 'POST',
+            body: new FormData(this)
+        });
+    });
+</script>

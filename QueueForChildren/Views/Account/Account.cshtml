@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Личный кабинет</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
+</head>
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4">
+                <h1><a href="#" class="logo"><span>Личный кабинет</span></a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a id="personalDataBtn" asp-action="PersonalData"><span class="fa fa-user mr-3"></span> Личные данные</a>
+                    </li>
+                    <li>
+                        <a id="childrenBtn" asp-action="Children"><span class="fa fa-users mr-3"></span> Мои дети</a>
+                    </li>
+                    <li>
+                        <a asp-action="SchoolList" asp-controller="SchoolQueue"><span class="fa fa-graduation-cap mr-3"></span> Школы</a>
+                    </li>
+                    <li>
+                        <a asp-action="FindSchool" asp-controller="SchoolQueue"><span class="fa fa-graduation-cap mr-3"></span> Найти школу</a>
+                    </li>
+                    <li>
+                        <a asp-action="KindergartenList" asp-controller="KindergartenQueue"><span class="fa fa-graduation-cap mr-3"></span> Детские сады</a>
+                    </li>
+                    <li>
+                        <a asp-action="FindKindergarten" asp-controller="KindergartenQueue"><span class="fa fa-graduation-cap mr-3"></span> Найти детский сад</a>
+                    </li>
+                    <li>
+                        <a asp-action="SelectSchoolQueue" asp-controller="SchoolQueue"><span class="fa fa-hourglass-start mr-3"></span> Очереди в школу</a>
+                    </li>
+                    <li>
+                        <a asp-action="SelectKindergartenQueue" asp-controller="KindergartenQueue"><span class="fa fa-hourglass-start mr-3"></span> Очереди в детский сад</a>
+                    </li>
+                    <li>
+                        <a class="logout" asp-action="Logout" asp-controller="User"><span class="fa fa-sign-out mr-3"></span> Выйти</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">           
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>    
+    <script src="~/js/popper.js"></script>  
+    <script src="~/js/site.js" asp-append-version="true"></script>  
+    <script src="~/js/account.js" asp-append-version="true"></script>
+</body>
+</html>
+

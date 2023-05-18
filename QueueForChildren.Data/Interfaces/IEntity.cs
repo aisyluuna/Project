@@ -12,7 +12,7 @@ namespace QueueForChildren.Data.Interfaces
 
         DateTime CreateDate { get; set; }
 
-        DateTime DeletedDate { get; set; }
+        DateTime? DeletedDate { get; set; }
 
         bool Deleted { get; set; }
     }

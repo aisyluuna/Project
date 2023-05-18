@@ -1,4 +1,6 @@
-﻿using QueueForChildren.Data.Enums;
+﻿using QueueForChildren.Data.Entities.Abstract;
+using QueueForChildren.Data.Entities.FNS;
+using QueueForChildren.Data.Enums;
 using QueueForChildren.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,12 +10,17 @@ using System.Threading.Tasks;
 
 namespace QueueForChildren.Data.Entities
 {
-    public sealed class Address : IEntity
-    {
+    public class Address : BaseEntity
+    {     
         /// <summary>
-        /// Идентификатор
+        /// Широта
         /// </summary>
-        public long Id { get; set; }
+        public double? Latitude { get; set; }
+
+        /// <summary>
+        /// Долгота
+        /// </summary>
+        public double? Longitude { get; set; }
 
         /// <summary>
         /// Тип региона
@@ -49,6 +56,11 @@ namespace QueueForChildren.Data.Entities
         /// Дом
         /// </summary>
         public int HouseNumber { get; set; }
+        
+        /// <summary>
+        /// Добавочная буква к номеру дома
+        /// </summary>
+        public string? AdditionalChar { get; set; }
 
         /// <summary>
         /// Подъезд
@@ -60,10 +72,20 @@ namespace QueueForChildren.Data.Entities
         /// </summary>
         public int? Apartment { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        public virtual ICollection<Child> Children { get; set; }
+        public virtual ICollection<Parent> Parents { get; set; }
+        public virtual ICollection<Estate> Estates { get; set; }
 
-        public DateTime DeletedDate { get; set; }
+        public virtual ICollection<School> Schools { get; set; }
+        public virtual ICollection<Kindergarten> Kindergartens { get; set; }
 
-        public bool Deleted { get; set; }
+        public Address()
+        {
+            Children = new List<Child>();
+            Parents = new List<Parent>();
+            Estates = new List<Estate>();
+            Schools = new List<School>();
+            Kindergartens = new List<Kindergarten>();
+        }
     }
 }

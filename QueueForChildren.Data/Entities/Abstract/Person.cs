@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QueueForChildren.Data.Entities.Abstract
 {
-    public abstract class Person
-    {
-        public long Id { get; set; }
-
+    public abstract class Person : BaseEntity
+    {     
         public string Name { get; set; } = default!;
 
         public string LastName { get; set; } = default!;
@@ -18,12 +12,20 @@ namespace QueueForChildren.Data.Entities.Abstract
 
         public DateTime BirthDate { get; set; }
 
-        public virtual string Serial { get; set; } = default!;
+        public string Serial { get; set; } = default!;
 
-        public virtual string Number { get; set; } = default!;
+        public string Number { get; set; } = default!;
 
-        public Address Address { get; set; } = default!;
+        public long AddressId { get; set; }
 
-        public virtual string IssuedBy { get; set; } = default!;
+        public virtual Address Address { get; set; } = default!;
+
+        public string IssuedBy { get; set; } = default!;
+
+        /// <summary>
+        /// Дата выдачи
+        /// </summary>
+        public DateTime IssuedDate { get; set; }
+
     }
 }

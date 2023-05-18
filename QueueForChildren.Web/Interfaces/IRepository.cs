@@ -12,13 +12,13 @@ namespace QueueForChildren.Web.Interfaces
     public interface IRepository<TEntity>
         where TEntity: class, IEntity
     {
-        IQueryable<IEntity> GetAll();
+        IQueryable<TEntity> GetAll();
 
         TEntity GetById(long id);
 
         void Create(TEntity[] entity);
 
-        void Update(TEntity[] entityy);
+        void Update(TEntity[] entity);
 
         void Delete (TEntity[] entity);
     }
@@ -55,9 +55,11 @@ namespace QueueForChildren.Web.Interfaces
             Update(entities);
         }
 
-        public IQueryable<IEntity> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
-            return _dbContext.Set<TEntity>().AsNoTracking();
+            return _dbContext.Set<TEntity>()
+                .AsNoTracking()
+                .Where(entity => !entity.Deleted);             
         }
 
         public TEntity GetById(long id)
